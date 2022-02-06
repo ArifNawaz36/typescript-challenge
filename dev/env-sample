@@ -1,0 +1,6 @@
+MONGO_URI=mongodb://localhost:27017/appdb
+PORT=8080
+INDEGO_API_URL=https://kiosks.bicycletransit.workers.dev/phl
+OPEN_WEATHER_API=http://api.openweathermap.org/data/2.5
+WEATHER_API_KEY=4a9ee0fb836b77ea677ac37671f68c10
+VALID_TOKEN=CBB5D684CCE1A22C95658FD17483D
