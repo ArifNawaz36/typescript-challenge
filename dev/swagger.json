@@ -1,0 +1,317 @@
+{
+    "swagger" : "2.0",
+    "host" : "ews-emea.api.bosch.com",
+    "basePath" : "/automotive/sandbox/vehicleident/v1",
+    "schemes" : [ "https", "http" ],
+    "paths" : {
+      "/stations" : {
+        "get" : {
+          "description" : "Get all stations at a specific time.",
+          "operationId" : "stations",
+          "summary" : "Displays all possible stations available at a given time.",
+          "parameters": [
+            {
+              "description" : "The time at which the stations will be searched.",
+              "required" : true,
+              "in" : "query",
+              "name" : "at",
+              "type" : "string"
+            }
+          ],
+          "responses" : {
+            "200" : {
+              "description" : "successful operation",
+              "schema":{
+                "type":"object",
+                "properties": {
+                  "at":{
+                    "type":"string",
+                    "example": "2022-02-05T04:00:00"
+                  },
+                  "stations":{
+                    "type":"array",
+                    "example":[
+                      {
+                        "geometry": {
+                            "coordinates": [
+                                -75.16374,
+                                39.95378
+                            ],
+                            "type": "Point"
+                        },
+                        "properties": {
+                            "id": 3004,
+                            "name": "Municipal Services Building Plaza",
+                            "coordinates": [
+                                -75.16374,
+                                39.95378
+                            ],
+                            "totalDocks": 30,
+                            "docksAvailable": 16,
+                            "bikesAvailable": 14,
+                            "classicBikesAvailable": 12,
+                            "smartBikesAvailable": 0,
+                            "electricBikesAvailable": 2,
+                            "rewardBikesAvailable": 14,
+                            "rewardDocksAvailable": 16,
+                            "kioskStatus": "FullService",
+                            "kioskPublicStatus": "Active",
+                            "kioskConnectionStatus": "Active",
+                            "kioskType": 1,
+                            "addressStreet": "1401 John F. Kennedy Blvd.",
+                            "addressCity": "Philadelphia",
+                            "addressState": "PA",
+                            "addressZipCode": 19102,
+                            "bikes": [
+                                {
+                                    "dockNumber": 2,
+                                    "isElectric": true,
+                                    "isAvailable": true,
+                                    "battery": "0.8"
+                                },
+                                {
+                                    "dockNumber": 3,
+                                    "isElectric": false,
+                                    "isAvailable": true,
+                                    "battery": null
+                                }
+                            ],
+                            "closeTime": null,
+                            "eventEnd": null,
+                            "eventStart": null,
+                            "isEventBased": false,
+                            "isVirtual": false,
+                            "kioskId": 3004,
+                            "notes": null,
+                            "openTime": null,
+                            "publicText": "",
+                            "timeZone": null,
+                            "trikesAvailable": 0,
+                            "latitude": 39.95378,
+                            "longitude": -75.16374
+                        },
+                        "type": "Feature"
+                    }
+                    ]
+                  },
+                  "weather":{
+                    "type":"object",
+                    "example": {
+                      "coord": {
+                          "lon": -75.1638,
+                          "lat": 39.9523
+                      },
+                      "weather": [
+                          {
+                              "id": 800,
+                              "main": "Clear",
+                              "description": "clear sky",
+                              "icon": "01n"
+                          }
+                      ],
+                      "base": "stations",
+                      "main": {
+                          "temp": 266.55,
+                          "feels_like": 266.55,
+                          "temp_min": 264.13,
+                          "temp_max": 268.12,
+                          "pressure": 1035,
+                          "humidity": 59
+                      },
+                      "visibility": 10000,
+                      "wind": {
+                          "speed": 0.45,
+                          "deg": 329,
+                          "gust": 4.02
+                      },
+                      "clouds": {
+                          "all": 0
+                      },
+                      "dt": 1644122079,
+                      "sys": {
+                          "type": 2,
+                          "id": 2037403,
+                          "country": "US",
+                          "sunrise": 1644062710,
+                          "sunset": 1644099851
+                      },
+                      "timezone": -18000,
+                      "id": 4560349,
+                      "name": "Philadelphia",
+                      "cod": 200
+                  }
+                  }
+                }
+              }
+            },
+            "404" : {
+              "description" : "Data not found"
+            }
+          }
+        }
+      },
+      "/stations/:stationId" : {
+        "get" : {
+          "description" : "Get one station at a specific time.",
+          "operationId" : "stations",
+          "summary" : "Displays info of one station available at a given time.",
+          "parameters": [
+            {
+              "description" : "The time at which the station will be searched.",
+              "required" : true,
+              "in" : "query",
+              "name" : "at",
+              "type" : "string"
+            },
+            {
+              "description" : "Find a station by Id.",
+              "required" : true,
+              "in" : "path",
+              "name" : "stationId",
+              "type" : "string"
+            }
+          ],
+          "responses" : {
+            "200" : {
+              "description" : "successful operation",
+              "schema":{
+                "type":"object",
+                "properties": {
+                  "at":{
+                    "type":"string",
+                    "example": "2022-02-05T04:00:00"
+                  },
+                  "station":{
+                    "type":"object",
+                    "example":{
+                        "geometry": {
+                            "coordinates": [
+                                -75.16374,
+                                39.95378
+                            ],
+                            "type": "Point"
+                        },
+                        "properties": {
+                            "id": 3004,
+                            "name": "Municipal Services Building Plaza",
+                            "coordinates": [
+                                -75.16374,
+                                39.95378
+                            ],
+                            "totalDocks": 30,
+                            "docksAvailable": 16,
+                            "bikesAvailable": 14,
+                            "classicBikesAvailable": 12,
+                            "smartBikesAvailable": 0,
+                            "electricBikesAvailable": 2,
+                            "rewardBikesAvailable": 14,
+                            "rewardDocksAvailable": 16,
+                            "kioskStatus": "FullService",
+                            "kioskPublicStatus": "Active",
+                            "kioskConnectionStatus": "Active",
+                            "kioskType": 1,
+                            "addressStreet": "1401 John F. Kennedy Blvd.",
+                            "addressCity": "Philadelphia",
+                            "addressState": "PA",
+                            "addressZipCode": 19102,
+                            "bikes": [
+                                {
+                                    "dockNumber": 2,
+                                    "isElectric": true,
+                                    "isAvailable": true,
+                                    "battery": "0.8"
+                                },
+                                {
+                                    "dockNumber": 3,
+                                    "isElectric": false,
+                                    "isAvailable": true,
+                                    "battery": null
+                                }
+                            ],
+                            "closeTime": null,
+                            "eventEnd": null,
+                            "eventStart": null,
+                            "isEventBased": false,
+                            "isVirtual": false,
+                            "kioskId": 3004,
+                            "notes": null,
+                            "openTime": null,
+                            "publicText": "",
+                            "timeZone": null,
+                            "trikesAvailable": 0,
+                            "latitude": 39.95378,
+                            "longitude": -75.16374
+                        },
+                        "type": "Feature"
+                    }
+                  },
+                  "weather":{
+                    "type":"object",
+                    "example": {
+                      "coord": {
+                          "lon": -75.1638,
+                          "lat": 39.9523
+                      },
+                      "weather": [
+                          {
+                              "id": 800,
+                              "main": "Clear",
+                              "description": "clear sky",
+                              "icon": "01n"
+                          }
+                      ],
+                      "base": "stations",
+                      "main": {
+                          "temp": 266.55,
+                          "feels_like": 266.55,
+                          "temp_min": 264.13,
+                          "temp_max": 268.12,
+                          "pressure": 1035,
+                          "humidity": 59
+                      },
+                      "visibility": 10000,
+                      "wind": {
+                          "speed": 0.45,
+                          "deg": 329,
+                          "gust": 4.02
+                      },
+                      "clouds": {
+                          "all": 0
+                      },
+                      "dt": 1644122079,
+                      "sys": {
+                          "type": 2,
+                          "id": 2037403,
+                          "country": "US",
+                          "sunrise": 1644062710,
+                          "sunset": 1644099851
+                      },
+                      "timezone": -18000,
+                      "id": 4560349,
+                      "name": "Philadelphia",
+                      "cod": 200
+                  }
+                  }
+                }
+              }
+            },
+            "404" : {
+              "description" : "Data not found"
+            }
+          }
+        }
+      },
+      "/indego-bikes-data" : {
+        "post" : {
+          "description" : "Get bikes data from Indego API.",
+          "operationId" : "stations",
+          "summary" : "Fetch bikes information from Indego API and stores it in db.",
+          "responses" : {
+            "default" : {
+              "description" : "successful operation"
+            }
+          }
+        }
+      }
+    }
+}
